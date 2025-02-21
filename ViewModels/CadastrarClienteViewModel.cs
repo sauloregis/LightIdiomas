@@ -8,11 +8,8 @@
         public bool Whatsapp { get; set; }
         public string Profissao { get; set; }
         public string Endereco { get; set; }
-        public string Nacionalidade { get; set; } //talvez seja interessante colocar uma lista aqui (puxar nacionalidades)
+        public string Nacionalidade { get; set; } 
         public string RG { get; set; }
         public string CPF { get; set; }
-
-
-
     }
 }

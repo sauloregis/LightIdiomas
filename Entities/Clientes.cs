@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LightIdiomas.Models
+namespace LightIdiomas.Entities
 {
     public class Clientes
     {
@@ -11,27 +11,11 @@ namespace LightIdiomas.Models
         public string NomeCompleto { get; set; }
 
         [Required]
-        public int NacionalidadeId { get; set; }
+        public string Nacionalidade { get; set; }
 
         [Required]
         [StringLength(100)]
-        public string Endereco_Rua { get; set; }
-
-        [Required]
-        [StringLength(10)]
-        public string Endereco_Numero { get; set; }
-
-        [Required]
-        [StringLength(8)]
-        public string Endereco_CEP { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string Endereco_Cidade { get; set; }
-
-        [Required]
-        [StringLength(2)]
-        public string Endereco_Estado { get; set; }
+        public string Endereco { get; set; }
 
         [Required]
         [StringLength(20)]

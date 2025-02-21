@@ -1,4 +1,4 @@
-﻿using LightIdiomas.Models;
+﻿using LightIdiomas.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
@@ -11,7 +11,6 @@ namespace LightIdiomas.Data
         {
         }
 
-        // Adicione aqui as tabelas do banco como DbSet
         public DbSet<Clientes> Clientes { get; set; }
     }
 }
