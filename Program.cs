@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using LightIdiomas.Data; // Substitua pelo namespace do seu DbContext
+using LightIdiomas.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configurar a string de conexão
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") + ";TrustServerCertificate=True";
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
@@ -13,7 +13,6 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configurar pipeline de requisição HTTP
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

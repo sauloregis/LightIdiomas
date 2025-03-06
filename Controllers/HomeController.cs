@@ -13,8 +13,10 @@ namespace LightIdiomas.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,
+                                 ApplicationDbContext context)
         {
+            _context = context;
             _logger = logger;
         }
 
@@ -30,7 +32,7 @@ namespace LightIdiomas.Controllers
             {
                 var cliente = new Clientes
                 {
-                    NomeCompleto = cadastrarCliente.Nome,
+                    Nm_Cliente = cadastrarCliente.Nome_Cliente,
                     Email = cadastrarCliente.Email,
                     Telefone = cadastrarCliente.Telefone,
                     Whatsapp = cadastrarCliente.Whatsapp,
@@ -44,6 +46,7 @@ namespace LightIdiomas.Controllers
                 _context.Clientes.Add(cliente);
                 _context.SaveChanges();
 
+                TempData["Sucesso"] = "Cliente cadastrado com sucesso!";
                 return RedirectToAction("Index");
             }
 

@@ -8,7 +8,7 @@ namespace LightIdiomas.Entities
 
         [Required]
         [StringLength(100)]
-        public string NomeCompleto { get; set; }
+        public string Nm_Cliente { get; set; }
 
         [Required]
         public string Nacionalidade { get; set; }
