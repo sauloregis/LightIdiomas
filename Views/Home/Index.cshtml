@@ -1,17 +1,73 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - LightIdiomas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-full flex font-sans bg-gray-100">
 
-<form asp-controller="Home" asp-action="CadastrarCliente" method="post">
-    <button type="submit" class="btn btn-primary">Cadastrar Cliente</button>
-</form>
+  <!-- Menu lateral -->
+  <nav class="w-56 bg-blue-900 text-white flex flex-col p-6">
+    <h2 class="text-2xl font-bold mb-6">LightIdiomas</h2>
+    <a href="#" class="mb-3 font-semibold hover:underline cursor-pointer">Dashboard</a>
+    <a href="#" class="mb-3 font-semibold hover:underline cursor-pointer">Alunos</a>
+    <a href="#" class="mb-3 font-semibold hover:underline cursor-pointer">Cursos</a>
+    <a href="#" class="font-semibold hover:underline cursor-pointer">Configurações</a>
+  </nav>
 
-@if (TempData["Sucesso"] != null)
-{
-    <script>
-        exibirAlerta('@TempData["Sucesso"]', "success");
-    </script>
-}
+  <!-- Conteúdo principal -->
+  <main class="flex-1 p-6 overflow-auto">
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="~/js/CadastrarCliente.js" asp-append-version="true"></script>
+    <!-- Dashboard cards -->
+    <div class="flex gap-6 mb-6">
+      <div class="bg-white rounded-lg p-6 shadow flex-1">
+        <h3 class="text-lg font-semibold mb-2">Total de Alunos</h3>
+        <p id="totalAlunos" class="text-3xl font-bold">0</p>
+      </div>
+      <div class="bg-white rounded-lg p-6 shadow flex-1">
+        <h3 class="text-lg font-semibold mb-2">Alunos com Whatsapp</h3>
+        <p id="alunosWhatsapp" class="text-3xl font-bold">0</p>
+      </div>
+      <div class="bg-white rounded-lg p-6 shadow flex-1">
+        <h3 class="text-lg font-semibold mb-2">Alunos por Nacionalidade</h3>
+        <ul id="alunosPorNacionalidade" class="list-disc list-inside"></ul>
+      </div>
+    </div>
+
+    <!-- Botão Cadastrar -->
+    <button
+      id="btnCadastrar"
+      class="mb-6 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+    >
+      Cadastrar Novo Aluno
+    </button>
+
+    <!-- Tabela -->
+    <div class="overflow-x-auto bg-white rounded-lg shadow">
+      <table class="min-w-full table-auto border-collapse">
+        <thead class="bg-blue-600 text-white">
+          <tr>
+            <th class="px-4 py-3 text-left">Nome</th>
+            <th class="px-4 py-3 text-left">Nacionalidade</th>
+            <th class="px-4 py-3 text-left">Endereço</th>
+            <th class="px-4 py-3 text-left">RG</th>
+            <th class="px-4 py-3 text-left">CPF</th>
+            <th class="px-4 py-3 text-left">Profissão</th>
+            <th class="px-4 py-3 text-left">Email</th>
+            <th class="px-4 py-3 text-left">Telefone</th>
+            <th class="px-4 py-3 text-left">Whatsapp</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaAlunosBody" class="divide-y divide-gray-200">
+          <!-- Linhas geradas pelo TypeScript -->
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <script src="index.js" type="module"></script>
+</body>
+</html>
