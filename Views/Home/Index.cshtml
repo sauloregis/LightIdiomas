@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model List<LightIdiomas.Entities.Clientes>
+
+<!DOCTYPE html>
 <html lang="pt-BR" class="h-full">
 <head>
   <meta charset="UTF-8" />
@@ -37,12 +39,10 @@
     </div>
 
     <!-- Botão Cadastrar -->
-    <button
-      id="btnCadastrar"
-      class="mb-6 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition-colors"
-    >
+    <a href="/CadastrarCliente/CadastrarCliente"
+      class="mb-6 inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
       Cadastrar Novo Aluno
-    </button>
+    </a>
 
     <!-- Tabela -->
     <div class="overflow-x-auto bg-white rounded-lg shadow">
@@ -61,7 +61,20 @@
           </tr>
         </thead>
         <tbody id="tabelaAlunosBody" class="divide-y divide-gray-200">
-          <!-- Linhas geradas pelo TypeScript -->
+          @foreach (var cliente in Model)
+          {
+            <tr>
+              <td class="px-4 py-3">@cliente.Nm_Cliente</td>
+              <td class="px-4 py-3">@cliente.Nacionalidade</td>
+              <td class="px-4 py-3">@cliente.Endereco</td>
+              <td class="px-4 py-3">@cliente.RG</td>
+              <td class="px-4 py-3">@cliente.CPF</td>
+              <td class="px-4 py-3">@cliente.Profissao</td>
+              <td class="px-4 py-3">@cliente.Email</td>
+              <td class="px-4 py-3">@cliente.Telefone</td>
+              <td class="px-4 py-3">@(cliente.Whatsapp ? "Sim" : "Não")</td>
+            </tr>
+          }
         </tbody>
       </table>
     </div>
