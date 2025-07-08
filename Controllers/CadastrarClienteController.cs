@@ -54,7 +54,7 @@ namespace LightIdiomas.Controllers
                 _context.SaveChanges();
 
                 TempData["Sucesso"] = "Cliente cadastrado com sucesso!";
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(cadastrarCliente);

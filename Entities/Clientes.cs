@@ -8,32 +8,32 @@ namespace LightIdiomas.Entities
 
         [Required]
         [StringLength(100)]
-        public string Nm_Cliente { get; set; }
+        public string Nm_Cliente { get; set; } = string.Empty;
 
         [Required]
-        public string Nacionalidade { get; set; }
+        public string Nacionalidade { get; set; } = string.Empty;
 
         [Required]
         [StringLength(100)]
-        public string Endereco { get; set; }
+        public string Endereco { get; set; } = string.Empty;
 
         [Required]
         [StringLength(20)]
-        public string RG { get; set; }
+        public string RG { get; set; } = string.Empty;
 
         [Required]
         [StringLength(11)]
-        public string CPF { get; set; }
+        public string CPF { get; set; } = string.Empty; 
 
-        public string Profissao { get; set; }
+        public string Profissao { get; set; } = string.Empty;
 
         [Required]
         [StringLength(100)]
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         [Required]
         [StringLength(13)]
-        public string Telefone { get; set; }
+        public string Telefone { get; set; } = string.Empty;
 
         [Required]
         public bool Whatsapp { get; set; }
