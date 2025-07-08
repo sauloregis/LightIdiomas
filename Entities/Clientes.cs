@@ -23,7 +23,7 @@ namespace LightIdiomas.Entities
 
         [Required]
         [StringLength(11)]
-        public string CPF { get; set; } = string.Empty; 
+        public string CPF { get; set; } = string.Empty;
 
         public string Profissao { get; set; } = string.Empty;
 
@@ -37,6 +37,14 @@ namespace LightIdiomas.Entities
 
         [Required]
         public bool Whatsapp { get; set; }
+
+        [Required]
+        public int CidadeId { get; set; }
+
+        public Cidade Cidade { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime DataNascimento { get; set; }
     }
 }
 
