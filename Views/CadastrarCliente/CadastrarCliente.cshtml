@@ -62,6 +62,21 @@
 		<form asp-controller="CadastrarCliente" asp-action="CadastrarCliente" method="post">
 			<label asp-for="Nome_Cliente">Nome:</label>
 			<input asp-for="Nome_Cliente" type="text" required>
+			
+			<label asp-for="Nacionalidade">Nacionalidade:</label>
+			<input asp-for="Nacionalidade" type="text" required>
+
+			<label asp-for="Endereco">Endereço:</label>
+			<input asp-for="Endereco" type="text" required>
+
+			<label asp-for="RG">RG:</label>
+			<input asp-for="RG" type="text" required>
+
+			<label asp-for="CPF">CPF:</label>
+			<input asp-for="CPF" type="text" required>
+
+			<label asp-for="Profissao">Profissão:</label>
+			<input asp-for="Profissao" type="text" required>
 
 			<label asp-for="Email">Email:</label>
 			<input asp-for="Email" type="email" required>
@@ -73,20 +88,12 @@
 				<input asp-for="Whatsapp" type="checkbox"> Whatsapp
 			</label>
 
-			<label asp-for="Profissao">Profissão:</label>
-			<input asp-for="Profissao" type="text" required>
+			<label asp-for="CidadeId">Cidade:</label>
+			<select asp-for="CidadeId" asp-items="Model.Cidades" class="form-control" required>
+				<option value="">Selecione a Cidade</option>
+			</select>
 
-			<label asp-for="Endereco">Endereço:</label>
-			<input asp-for="Endereco" type="text" required>
-
-			<label asp-for="Nacionalidade">Nacionalidade:</label>
-			<input asp-for="Nacionalidade" type="text" required>
-
-			<label asp-for="RG">RG:</label>
-			<input asp-for="RG" type="text" required>
-
-			<label asp-for="CPF">CPF:</label>
-			<input asp-for="CPF" type="text" required>
+			
 
 			<button type="submit">Cadastrar</button>
 		</form>

@@ -45,6 +45,36 @@ namespace LightIdiomas.Entities
 
         [DataType(DataType.Date)]
         public DateTime DataNascimento { get; set; }
+
+        [Required]
+        public Genero Genero { get; set; }
+
+        public NivelIngles NivelIngles { get; set; }
+        public int? TurmaId { get; set; } // Pode ser null para alunos sem turma
+        public Turma? Turma { get; set; }
+    }
+
+    public enum Genero
+    {
+        Masculino,
+        Feminino,
+        Outro,
+        PrefiroNaoInformar
+    }
+    
+    public enum NivelIngles
+    {
+        Beginner1,
+        Beginner2,
+        Beginner3,
+        Intermediate1,
+        Intermediate2,
+        Intermediate3,
+        Intermediate4,
+        Intermediate5,
+        Advanced1,
+        Advanced2,
+        Advanced3,
     }
 }
 
