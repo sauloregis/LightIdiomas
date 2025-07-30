@@ -1,43 +1,24 @@
-using LightIdiomas.Data;
-using LightIdiomas.Entities;
+﻿using LightIdiomas.Entities;
 using LightIdiomas.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace LightIdiomas.Controllers
 {
-    public class CadastrarClienteController : Controller
+    public class CadastrarTurmaController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly ApplicationDbContext _context;
-
-        public CadastrarClienteController(ILogger<HomeController> logger,
-                                 ApplicationDbContext context)
+        public IActionResult CadastrarTurma()
         {
-            _context = context;
-            _logger = logger;
-        }
-
-        public IActionResult CadastrarCliente()
-        {
-            var model = new ClientesViewModel();
-
-            model.Generos = Enum.GetValues(typeof(Genero))
-                .Cast<Genero>()
-                .Select(g => new SelectListItem
-                {
-                    Value = ((int)g).ToString(),
-                    Text = g.ToString()
-                }).ToList();
-
-            return View(model);
+            return View();
         }
 
         [HttpPost]
-        public IActionResult CadastrarCliente(ClientesViewModel cadastrarCliente)
+        public IActionResult CadastrarTurma(TurmaViewModel cadastrarTurma)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
+
+                // Validar se CPF já está cadastrado
                 var clienteExistente = _context.Clientes.FirstOrDefault(c => c.CPF == cadastrarCliente.CPF);
 
                 if (clienteExistente != null)

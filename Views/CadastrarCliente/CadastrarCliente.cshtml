@@ -88,12 +88,32 @@
 				<input asp-for="Whatsapp" type="checkbox"> Whatsapp
 			</label>
 
+			<label asp-for="EstadoId">Estado:</label>
+			<select asp-for="EstadoId" asp-items="Model.Estados" class="form-control" required>
+				<option value="">Selecione o Estado</option>
+			</select>
+
 			<label asp-for="CidadeId">Cidade:</label>
 			<select asp-for="CidadeId" asp-items="Model.Cidades" class="form-control" required>
 				<option value="">Selecione a Cidade</option>
 			</select>
 
-			
+            <label asp-for="DataNascimento">Data de Nascimento:</label>
+
+			<label asp-for="Genero">Gênero:</label>
+			<select asp-for="Genero" asp-items="Model.Generos" class="form-control" required>
+				<option value="">Selecione o gênero</option>
+			</select>
+
+			<label asp-for="TurmaId">Turma:</label>
+			<select asp-for="TurmaId" asp-items="Model.Turmas" class="form-control" required>
+				<option value="">Selecione a Turma</option>
+			</select>
+
+			<label asp-for="NivelIngles">Nível de Inglês:</label>
+			<select asp-for="NivelIngles" asp-items="@Html.GetEnumSelectList<LightIdiomas.Entities.NivelIngles>()" class="form-control" required>
+				<option value="">Selecione o Nível do Inglês</option>
+			</select>
 
 			<button type="submit">Cadastrar</button>
 		</form>

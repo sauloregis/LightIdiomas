@@ -26,5 +26,7 @@ namespace LightIdiomas.ViewModels
         public List<SelectListItem> Estados { get; set; }
         public List<SelectListItem> Cidades { get; set; }
         public List<SelectListItem> Turmas { get; set; }
+        public List<SelectListItem> Generos { get; set; }
+
     }
 }
