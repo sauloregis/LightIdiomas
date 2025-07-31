@@ -1,6 +1,5 @@
 ﻿using LightIdiomas.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
 namespace LightIdiomas.Data
 {
@@ -12,5 +11,28 @@ namespace LightIdiomas.Data
         }
 
         public DbSet<Clientes> Clientes { get; set; }
+        public DbSet<Estado> Estados { get; set; }
+        public DbSet<Cidade> Cidades { get; set; }
+        public DbSet<Turma> Turmas { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Cidade>()
+                .HasOne(c => c.Estado)
+                .WithMany(e => e.Cidades)
+                .HasForeignKey(c => c.EstadoId);
+
+            modelBuilder.Entity<Clientes>()
+                .HasOne(c => c.Cidade)
+                .WithMany()
+                .HasForeignKey(c => c.CidadeId);
+
+            modelBuilder.Entity<Clientes>()
+                .HasOne(c => c.Turma)
+                .WithMany()
+                .HasForeignKey(c => c.TurmaId);
+        }
     }
 }

@@ -68,5 +68,19 @@ namespace LightIdiomas.Controllers
 
             return View(cadastrarCliente);
         }
+        
+        [HttpGet]
+        public JsonResult ObterCidadesPorEstado(int estadoId)
+        {
+            var cidades = _context.Cidades
+                .Where(c => c.EstadoId == estadoId)
+                .Select(c => new SelectListItem
+                {
+                    Value = c.Id.ToString(),
+                    Text = c.Nome
+                }).ToList();
+
+            return Json(cidades);
+        }
     }
 }

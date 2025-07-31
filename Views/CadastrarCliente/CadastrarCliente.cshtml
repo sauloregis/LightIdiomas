@@ -89,12 +89,12 @@
 			</label>
 
 			<label asp-for="EstadoId">Estado:</label>
-			<select asp-for="EstadoId" asp-items="Model.Estados" class="form-control" required>
+			<select asp-for="EstadoId" asp-items="Model.Estados" id="estadoSelect" class="form-control" required>
 				<option value="">Selecione o Estado</option>
 			</select>
 
 			<label asp-for="CidadeId">Cidade:</label>
-			<select asp-for="CidadeId" asp-items="Model.Cidades" class="form-control" required>
+			<select asp-for="CidadeId" asp-items="Model.Cidades" id="cidadeSelect" class="form-control" required>
 				<option value="">Selecione a Cidade</option>
 			</select>
 
