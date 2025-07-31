@@ -27,12 +27,14 @@ namespace LightIdiomas.Data
             modelBuilder.Entity<Clientes>()
                 .HasOne(c => c.Cidade)
                 .WithMany()
-                .HasForeignKey(c => c.CidadeId);
+                .HasForeignKey(c => c.CidadeId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Clientes>()
                 .HasOne(c => c.Turma)
-                .WithMany()
-                .HasForeignKey(c => c.TurmaId);
+                .WithMany(t => t.Clientes)
+                .HasForeignKey(c => c.TurmaId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }
