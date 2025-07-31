@@ -1,53 +1,83 @@
-﻿using LightIdiomas.Entities;
+﻿using LightIdiomas.Data;
+using LightIdiomas.Entities;
 using LightIdiomas.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace LightIdiomas.Controllers
 {
     public class CadastrarTurmaController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
+        public CadastrarTurmaController(ILogger<HomeController> logger,
+                                        ApplicationDbContext context)
+        {
+            _context = context;
+            _logger = logger;
+        }
+
         public IActionResult CadastrarTurma()
         {
-            return View();
+            var model = new TurmaViewModel
+            {
+                Niveis = Enum.GetValues(typeof(NivelTurma))
+                .Cast<NivelTurma>()
+                .Select(n => new SelectListItem
+                {
+                    Value = ((int)n).ToString(),
+                    Text = n.ToString()
+                }).ToList(),
+
+                Statuses = Enum.GetValues(typeof(StatusTurma))
+                .Cast<StatusTurma>()
+                .Select(s => new SelectListItem
+                {
+                    Value = ((int)s).ToString(),
+                    Text = s.ToString()
+                }).ToList(),
+
+                Tipos = Enum.GetValues(typeof(TipoTurma))
+                .Cast<TipoTurma>()
+                .Select(t => new SelectListItem
+                {
+                    Value = ((int)t).ToString(),
+                    Text = t.ToString()
+                }).ToList()
+            };
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult CadastrarTurma(TurmaViewModel cadastrarTurma)
+        [ValidateAntiForgeryToken]
+        public IActionResult CadastrarTurma(TurmaViewModel model)
         {
             if (ModelState.IsValid)
             {
-
-                // Validar se CPF já está cadastrado
-                var clienteExistente = _context.Clientes.FirstOrDefault(c => c.CPF == cadastrarCliente.CPF);
-
-                if (clienteExistente != null)
+                var turma = new Turma
                 {
-                    ModelState.AddModelError("CPF", "CPF já cadastrado.");
-                    return View(cadastrarCliente);
-                }
-
-                var cliente = new Clientes
-                {
-                    Nm_Cliente = cadastrarCliente.Nome_Cliente,
-                    Email = cadastrarCliente.Email,
-                    Telefone = cadastrarCliente.Telefone,
-                    Whatsapp = cadastrarCliente.Whatsapp,
-                    Profissao = cadastrarCliente.Profissao,
-                    Endereco = cadastrarCliente.Endereco,
-                    Nacionalidade = cadastrarCliente.Nacionalidade,
-                    RG = cadastrarCliente.RG,
-                    CPF = cadastrarCliente.CPF
+                    Nome = model.Nome,
+                    Dia = model.Dia,
+                    Horario = model.Horario,
+                    Status = (StatusTurma)model.Status,
+                    Tipo = (TipoTurma)model.Tipo
                 };
 
-                _context.Clientes.Add(cliente);
+                _context.Turmas.Add(turma);
                 _context.SaveChanges();
 
-                TempData["Sucesso"] = "Cliente cadastrado com sucesso!";
+                TempData["Sucesso"] = "Turma cadastrada com sucesso!";
                 return RedirectToAction("Index", "Home");
             }
 
-            return View(cadastrarCliente);
+            model.Niveis = Enum.GetValues(typeof(NivelTurma)).Cast<NivelTurma>()
+                .Select(n => new SelectListItem { Value = ((int)n).ToString(), Text = n.ToString() }).ToList();
+            model.Statuses = Enum.GetValues(typeof(StatusTurma)).Cast<StatusTurma>()
+                .Select(s => new SelectListItem { Value = ((int)s).ToString(), Text = s.ToString() }).ToList();
+            model.Tipos = Enum.GetValues(typeof(TipoTurma)).Cast<TipoTurma>()
+                .Select(t => new SelectListItem { Value = ((int)t).ToString(), Text = t.ToString() }).ToList();
+
+            return View(model);
         }
     }
 }

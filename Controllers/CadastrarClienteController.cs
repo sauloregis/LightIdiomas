@@ -56,7 +56,12 @@ namespace LightIdiomas.Controllers
                     Endereco = cadastrarCliente.Endereco,
                     Nacionalidade = cadastrarCliente.Nacionalidade,
                     RG = cadastrarCliente.RG,
-                    CPF = cadastrarCliente.CPF
+                    CPF = cadastrarCliente.CPF,
+                    CidadeId = cadastrarCliente.CidadeId,
+                    DataNascimento = cadastrarCliente.DataNascimento,
+                    Genero = cadastrarCliente.Genero,
+                    TurmaId = cadastrarCliente.TurmaId,
+                    NivelIngles = cadastrarCliente.NivelIngles
                 };
 
                 _context.Clientes.Add(cliente);
