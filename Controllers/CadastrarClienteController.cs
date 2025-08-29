@@ -30,6 +30,13 @@ namespace LightIdiomas.Controllers
                     Text = g.ToString()
                 }).ToList();
 
+            model.Estados = _context.Estados
+                .Select(e => new SelectListItem
+                {
+                    Value = e.Id.ToString(),
+                    Text = e.UF + " - " + e.Nome
+                }).ToList();
+
             return View(model);
         }
 

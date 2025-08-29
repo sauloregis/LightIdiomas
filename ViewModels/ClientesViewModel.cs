@@ -1,16 +1,22 @@
 ﻿using LightIdiomas.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 
 namespace LightIdiomas.ViewModels
 {
     public class ClientesViewModel
     {
+        [Required(ErrorMessage = "O campo Nome é obrigatório.")]
         public string Nome_Cliente { get; set; } = string.Empty;
+        
+        [Required(ErrorMessage = "O campo Nacionalidade é obrigatório.")]
         public string Nacionalidade { get; set; } = string.Empty;
+
         public string Endereco { get; set; } = string.Empty;
         public string RG { get; set; } = string.Empty;
         public string CPF { get; set; } = string.Empty;
         public string Profissao { get; set; } = string.Empty;
+        [EmailAddress(ErrorMessage = "Informe um e-mail válido.")]
         public string Email { get; set; } = string.Empty;
         public string Telefone { get; set; } = string.Empty;
         public bool Whatsapp { get; set; }

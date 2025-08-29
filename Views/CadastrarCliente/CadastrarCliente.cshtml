@@ -60,8 +60,9 @@
 	<div class="container">
 		<h1>Cadastro de Clientes</h1>
 		<form asp-controller="CadastrarCliente" asp-action="CadastrarCliente" method="post">
-			<label asp-for="Nome_Cliente">Nome:</label>
+			<label asp-for="Nome_Cliente">Nome*:</label>
 			<input asp-for="Nome_Cliente" type="text" required>
+			<span asp-validation-for="Nome_Cliente" class="text-danger"></span>
 			
 			<label asp-for="Nacionalidade">Nacionalidade:</label>
 			<input asp-for="Nacionalidade" type="text" required>
@@ -118,10 +119,9 @@
 			<button type="submit">Cadastrar</button>
 		</form>
 	</div>
-
-	
 </body>
 </html>
+<script src="~/js/CadastrarCliente.js"></script>
 
 
 
