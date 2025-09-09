@@ -37,6 +37,13 @@ namespace LightIdiomas.Controllers
                     Text = e.UF + " - " + e.Nome
                 }).ToList();
 
+            model.Turmas = _context.Turmas
+                .Select(t => new SelectListItem()
+                {
+                    Value = t.Id.ToString(),
+                    Text = t.Nome
+                }).ToList();
+
             return View(model);
         }
 

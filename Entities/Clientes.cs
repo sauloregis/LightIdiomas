@@ -64,6 +64,7 @@ namespace LightIdiomas.Entities
     
     public enum NivelIngles
     {
+        NaoAvaliado,
         Beginner1,
         Beginner2,
         Beginner3,

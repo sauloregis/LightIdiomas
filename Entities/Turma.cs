@@ -12,7 +12,11 @@ public class Turma
     [Required]
     public DayOfWeek Dia { get; set; }
 
+    [Required]
     public TimeSpan Horario { get; set; }
+
+    [Required]
+    public NivelTurma Nivel { get; set; }
 
     [Required]
     public StatusTurma Status { get; set; } = StatusTurma.Ativa;

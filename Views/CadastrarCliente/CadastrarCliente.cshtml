@@ -60,61 +60,73 @@
 	<div class="container">
 		<h1>Cadastro de Clientes</h1>
 		<form asp-controller="CadastrarCliente" asp-action="CadastrarCliente" method="post">
-			<label asp-for="Nome_Cliente">Nome*:</label>
+			<label asp-for="Nome_Cliente">Nome:*</label>
 			<input asp-for="Nome_Cliente" type="text" required>
 			<span asp-validation-for="Nome_Cliente" class="text-danger"></span>
 			
-			<label asp-for="Nacionalidade">Nacionalidade:</label>
+			<label asp-for="Nacionalidade">Nacionalidade:*</label>
 			<input asp-for="Nacionalidade" type="text" required>
+			<span asp-validation-for="Nacionalidade" class="text-danger"></span>
 
-			<label asp-for="Endereco">Endereço:</label>
+			<label asp-for="Endereco">Endereço:*</label>
 			<input asp-for="Endereco" type="text" required>
+			<span asp-validation-for="Endereco" class="text-danger"></span>
 
-			<label asp-for="RG">RG:</label>
+			<label asp-for="RG">RG:*</label>
 			<input asp-for="RG" type="text" required>
+			<span asp-validation-for="RG" class="text-danger"></span>
 
-			<label asp-for="CPF">CPF:</label>
+			<label asp-for="CPF">CPF:*</label>
 			<input asp-for="CPF" type="text" required>
+			<span asp-validation-for="CPF" class="text-danger"></span>
 
-			<label asp-for="Profissao">Profissão:</label>
+			<label asp-for="Profissao">Profissão:*</label>
 			<input asp-for="Profissao" type="text" required>
+			<span asp-validation-for="Profissao" class="text-danger"></span>
 
-			<label asp-for="Email">Email:</label>
+			<label asp-for="Email">Email:*</label>
 			<input asp-for="Email" type="email" required>
+			<span asp-validation-for="Email" class="text-danger"></span>
 
-			<label asp-for="Telefone">Telefone:</label>
+			<label asp-for="Telefone">Telefone:*</label>
 			<input asp-for="Telefone" type="tel" id="telefone" required>
+			<span asp-validation-for="Telefone" class="text-danger"></span>
 
 			<label>
 				<input asp-for="Whatsapp" type="checkbox"> Whatsapp
 			</label>
 
-			<label asp-for="EstadoId">Estado:</label>
+			<label asp-for="EstadoId">Estado:*</label>
 			<select asp-for="EstadoId" asp-items="Model.Estados" id="estadoSelect" class="form-control" required>
 				<option value="">Selecione o Estado</option>
 			</select>
+			<span asp-validation-for="EstadoId" class="text-danger"></span>
 
-			<label asp-for="CidadeId">Cidade:</label>
+			<label asp-for="CidadeId">Cidade:*</label>
 			<select asp-for="CidadeId" asp-items="Model.Cidades" id="cidadeSelect" class="form-control" required>
 				<option value="">Selecione a Cidade</option>
 			</select>
+			<span asp-validation-for="CidadeId" class="text-danger"></span>
 
-            <label asp-for="DataNascimento">Data de Nascimento:</label>
+            <label asp-for="DataNascimento">Data de Nascimento:*</label>
+			<span asp-validation-for="DataNascimento" class="text-danger"></span>
 
-			<label asp-for="Genero">Gênero:</label>
+			<label asp-for="Genero">Gênero:*</label>
 			<select asp-for="Genero" asp-items="Model.Generos" class="form-control" required>
 				<option value="">Selecione o gênero</option>
 			</select>
+			<span asp-validation-for="Genero" class="text-danger"></span>
 
 			<label asp-for="TurmaId">Turma:</label>
 			<select asp-for="TurmaId" asp-items="Model.Turmas" class="form-control" required>
 				<option value="">Selecione a Turma</option>
 			</select>
 
-			<label asp-for="NivelIngles">Nível de Inglês:</label>
+			<label asp-for="NivelIngles">Nível de Inglês:*</label>
 			<select asp-for="NivelIngles" asp-items="@Html.GetEnumSelectList<LightIdiomas.Entities.NivelIngles>()" class="form-control" required>
 				<option value="">Selecione o Nível do Inglês</option>
 			</select>
+			<span asp-validation-for="NivelIngles" class="text-danger"></span>
 
 			<button type="submit">Cadastrar</button>
 		</form>
