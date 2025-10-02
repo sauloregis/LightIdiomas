@@ -23,10 +23,11 @@
         <span asp-validation-for="Horario" class="text-danger"></span>
     </div>
 
-    @* <div class="form-group">
+    <div class="form-group">
         <label asp-for="Nivel"></label>
-        <select asp-for="Nivel" asp-items="Model.Nivel" class="form-control"></select>
-    </div> *@
+        <select asp-for="Nivel" asp-items="Model.Niveis" class="form-control"></select>
+        <span asp-validation-for="Nivel" class="text-danger"></span>
+    </div>
 
     <div class="form-group">
         <label asp-for="Status"></label>

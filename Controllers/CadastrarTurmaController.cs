@@ -59,7 +59,7 @@ namespace LightIdiomas.Controllers
                     Nome = model.Nome,
                     Dia = model.Dia,
                     Horario = model.Horario,
-                    //falta colocar nivel aqui
+                    Nivel = (NivelTurma)model.Nivel,
                     Status = (StatusTurma)model.Status,
                     Tipo = (TipoTurma)model.Tipo
                 };

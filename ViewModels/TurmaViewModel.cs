@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace LightIdiomas.ViewModels
@@ -17,16 +18,21 @@ namespace LightIdiomas.ViewModels
         public TimeSpan Horario { get; set; }
 
         [Required]
-        public NivelTurma Nivel { get; set; }
+        public int Nivel { get; set; }
 
         [Required]
-        public StatusTurma Status { get; set; }
+        public int Status { get; set; }
 
         [Required]
-        public TipoTurma Tipo { get; set; }
+        public int Tipo { get; set; }
 
+        [BindNever]
         public List<SelectListItem> Niveis { get; set; }
+
+        [BindNever]
         public List<SelectListItem> Statuses { get; set; }
+
+        [BindNever]
         public List<SelectListItem> Tipos { get; set; }
     }
 }
