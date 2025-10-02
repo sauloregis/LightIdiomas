@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
@@ -11,11 +12,11 @@ namespace LightIdiomas.ViewModels
         public string Nome { get; set; }
 
         [Required]
-        public DayOfWeek Dia { get; set; }
+        public int Dia { get; set; }
 
         [Required]
         [DataType(DataType.Time)]
-        public TimeSpan Horario { get; set; }
+        public string Horario { get; set; }
 
         [Required]
         public int Nivel { get; set; }
@@ -26,13 +27,13 @@ namespace LightIdiomas.ViewModels
         [Required]
         public int Tipo { get; set; }
 
-        [BindNever]
+        [ValidateNever]
         public List<SelectListItem> Niveis { get; set; }
 
-        [BindNever]
+        [ValidateNever]
         public List<SelectListItem> Statuses { get; set; }
 
-        [BindNever]
+        [ValidateNever]
         public List<SelectListItem> Tipos { get; set; }
     }
 }

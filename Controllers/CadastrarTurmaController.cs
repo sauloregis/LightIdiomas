@@ -57,8 +57,8 @@ namespace LightIdiomas.Controllers
                 var turma = new Turma
                 {
                     Nome = model.Nome,
-                    Dia = model.Dia,
-                    Horario = model.Horario,
+                    Dia = (DayOfWeek)model.Dia,
+                    Horario = TimeSpan.Parse(model.Horario),
                     Nivel = (NivelTurma)model.Nivel,
                     Status = (StatusTurma)model.Status,
                     Tipo = (TipoTurma)model.Tipo
