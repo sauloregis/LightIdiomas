@@ -16,7 +16,7 @@ public class Turma
     public TimeSpan Horario { get; set; }
 
     [Required]
-    public NivelTurma Nivel { get; set; }
+    public NivelTurma NivelIngles { get; set; }
 
     [Required]
     public StatusTurma Status { get; set; } = StatusTurma.Ativa;

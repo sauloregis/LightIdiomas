@@ -50,7 +50,15 @@ namespace LightIdiomas.Controllers
         [HttpPost]
         public IActionResult CadastrarCliente(ClientesViewModel cadastrarCliente)
         {
-            if(ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                var erros = ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage)
+                    .ToList();
+            }
+
+            if (ModelState.IsValid)
             {
                 var clienteExistente = _context.Clientes.FirstOrDefault(c => c.CPF == cadastrarCliente.CPF);
 

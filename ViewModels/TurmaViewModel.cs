@@ -19,7 +19,7 @@ namespace LightIdiomas.ViewModels
         public string Horario { get; set; }
 
         [Required]
-        public int Nivel { get; set; }
+        public int NivelIngles { get; set; }
 
         [Required]
         public int Status { get; set; }

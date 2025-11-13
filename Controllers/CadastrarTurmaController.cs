@@ -59,7 +59,7 @@ namespace LightIdiomas.Controllers
                     Nome = model.Nome,
                     Dia = (DayOfWeek)model.Dia,
                     Horario = TimeSpan.Parse(model.Horario),
-                    Nivel = (NivelTurma)model.Nivel,
+                    NivelIngles = (NivelTurma)model.NivelIngles,
                     Status = (StatusTurma)model.Status,
                     Tipo = (TipoTurma)model.Tipo
                 };
