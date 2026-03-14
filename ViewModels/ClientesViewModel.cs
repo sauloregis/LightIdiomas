@@ -19,6 +19,7 @@ namespace LightIdiomas.ViewModels
         public string RG { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O campo CPF é obrigatório.")]
+        [CpfValidation(ErrorMessage = "CPF inválido.")]
         public string CPF { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O campo profissão é obrigatório.")]
@@ -27,34 +28,36 @@ namespace LightIdiomas.ViewModels
         [EmailAddress(ErrorMessage = "Informe um e-mail válido.")]
         public string Email { get; set; } = string.Empty;
 
-        [EmailAddress(ErrorMessage = "O campo telefone é obrigatório.")]
+        [Required(ErrorMessage = "O campo telefone é obrigatório.")]
+        [Phone(ErrorMessage = "Informe um telefone válido.")]
         public string Telefone { get; set; } = string.Empty;
 
         public bool Whatsapp { get; set; } = false;
 
-        [EmailAddress(ErrorMessage = "A cidade é obrigatória.")]
+        [Required(ErrorMessage = "A cidade é obrigatória.")]
         public int CidadeId { get; set; }
 
-        [EmailAddress(ErrorMessage = "A data de nascimento é campo obrigatório")]
+        [Required(ErrorMessage = "A data de nascimento é campo obrigatório")]
+        [DataType(DataType.Date)]
         public DateTime DataNascimento { get; set; }
 
-        [EmailAddress(ErrorMessage = "Gênero é campo obrigatório")]
+        [Required(ErrorMessage = "Gênero é campo obrigatório")]
         public Genero Genero { get; set; }
 
-        [EmailAddress(ErrorMessage = "O estado é campo obrigatório")]
+        [Required(ErrorMessage = "O estado é campo obrigatório")]
         public int EstadoId { get; set; }
 
-        public int TurmaId { get; set; }
+        public int? TurmaId { get; set; }
 
-        [EmailAddress(ErrorMessage = "O nível de inglês é campo obrigatório.")]
+        [Required(ErrorMessage = "O nível de inglês é campo obrigatório.")]
         public NivelIngles NivelIngles { get; set; }
 
         public string Nome_Turma { get; set; } = string.Empty;
 
-        public List<SelectListItem> Estados { get; set; }
-        public List<SelectListItem> Cidades { get; set; }
-        public List<SelectListItem> Turmas { get; set; }
-        public List<SelectListItem> Generos { get; set; }
+        public List<SelectListItem> Estados { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> Cidades { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> Turmas { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> Generos { get; set; } = new List<SelectListItem>();
 
     }
 }

@@ -361,3 +361,22 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Arquivos de configuração locais / segredos
+appsettings.*.Development.json
+appsettings.Local.json
+secrets.json
+.env
+
+# Perfis de publicação / certificados privados
+*.PublishSettings
+*.pubxml
+*.pfx
+*.cer
+
+# Arquivos que podem conter credenciais (Visual Studio / IIS)
+**/Properties/launchSettings.json
+
+# Logs e dumps locais
+*.log
+*.dump
