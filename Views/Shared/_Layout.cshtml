@@ -5,65 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>@ViewData["Title"] - LightIdiomas</title>
 
-  <link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-    />
-
   <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+  @* Mantém o bootstrap opcional — comente se não for usar *@
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-  <style>
-    /* Sobrescrever as cores do Bootstrap */
-    .bg-primary {
-      background-color: #3e5b36 !important;
-    }
-    
-    .bg-success {
-      background-color: #f2c34b !important;
-    }
-    
-    .bg-light {
-      background-color: #9bb496 !important;
-    }
-    
-    .table-primary {
-      background-color: #3e5b36 !important;
-      color: white !important;
-    }
-    
-    /* Ajustar cor do texto no card success */
-    .card.bg-success {
-      color: #000 !important;
-    }
-  </style>
+  @RenderSection("Head", required: false)
 </head>
-<body class="d-flex flex-column min-vh-100">
-  <div class="container-fluid flex-fill">
-    <div class="row g-0">
-      <nav class="col-md-2 bg-primary border-end vh-100 position-sticky top-0 p-3">
-        <h4 class="mb-4">LightIdiomas</h4>
-        <ul class="nav flex-column">
-          <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Alunos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Cursos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Configurações</a></li>
-        </ul>
-      </nav>
+<body>
+  <main role="main" class="container-fluid">
+    @RenderBody()
+  </main>
 
-      <main class="col-md-10 p-4">
-        @RenderBody()
-      </main>
-    </div>
-  </div>
-
-  <footer class="mt-auto py-3 bg-light text-center">
-    <div class="container">
-      &copy; 2024 – LightIdiomas – 
-      <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
-  </footer>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
-  </script>
+  @* Scripts comuns (opcional) *@
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  @RenderSection("Scripts", required: false)
 </body>
 </html>
