@@ -3,6 +3,7 @@ using LightIdiomas.Entities;
 using LightIdiomas.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Text.RegularExpressions;
 
 namespace LightIdiomas.Controllers
 {
@@ -56,7 +57,9 @@ namespace LightIdiomas.Controllers
                 return View(cadastrarCliente);
             }
 
-            var clienteExistente = _context.Clientes.FirstOrDefault(c => c.CPF == cadastrarCliente.CPF);
+            var cpfLimpo = Regex.Replace(cadastrarCliente.CPF ?? string.Empty, @"\D", "");
+
+            var clienteExistente = _context.Clientes.FirstOrDefault(c => c.CPF == cpfLimpo);
 
             if (clienteExistente != null)
             {
@@ -65,17 +68,20 @@ namespace LightIdiomas.Controllers
                 return View(cadastrarCliente);
             }
 
+            var rgLimpo = Regex.Replace(cadastrarCliente.RG ?? string.Empty, @"\D", "");
+            var telefoneLimpo = Regex.Replace(cadastrarCliente.Telefone ?? string.Empty, @"\D", "");
+
             var cliente = new Clientes
             {
                 Nm_Cliente = cadastrarCliente.Nome_Cliente,
                 Email = cadastrarCliente.Email,
-                Telefone = cadastrarCliente.Telefone,
+                Telefone = telefoneLimpo,
                 Whatsapp = cadastrarCliente.Whatsapp,
                 Profissao = cadastrarCliente.Profissao,
                 Endereco = cadastrarCliente.Endereco,
                 Nacionalidade = cadastrarCliente.Nacionalidade,
-                RG = cadastrarCliente.RG,
-                CPF = cadastrarCliente.CPF,
+                RG = rgLimpo,
+                CPF = cpfLimpo,
                 CidadeId = cadastrarCliente.CidadeId,
                 DataNascimento = cadastrarCliente.DataNascimento,
                 Genero = cadastrarCliente.Genero,
