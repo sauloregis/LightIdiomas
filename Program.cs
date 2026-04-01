@@ -3,12 +3,10 @@ using LightIdiomas.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configurar a string de conexão
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") + ";TrustServerCertificate=True";
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-// Configurar serviços adicionais (como controllers e endpoints)
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
