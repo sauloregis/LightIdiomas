@@ -6,3 +6,9 @@ Este projeto é um sistema de gerenciamento interno desenvolvido para a Light Id
 - Gestão de Alunos: Tela dedicada para listar e cadastrar novos alunos, incluindo informações de contato e financeiro.
 - Gestão de Turmas: Espaço para organizar os níveis de ensino e horários oferecidos pela escola.
 - CRUD Completo: Na tela inicial, é possível visualizar, editar ou remover cadastros de alunos de forma rápida.
+
+## Tecnologias utilizadas:
+- Backend: C# com framework .NET
+- Frontend: HTML5, CSS3 e JavaScript
+- Design/UI: Bootstrap
+- Banco de Dados: SQL Server
