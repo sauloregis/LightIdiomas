@@ -6,6 +6,8 @@ namespace LightIdiomas.ViewModels
 {
     public class ClientesViewModel
     {
+        public int IdCliente { get; set; }
+
         [Required(ErrorMessage = "O campo Nome é obrigatório.")]
         public string Nome_Cliente { get; set; } = string.Empty;
         

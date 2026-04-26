@@ -45,6 +45,7 @@ namespace LightIdiomas.Controllers
                     Text = t.Nome
                 }).ToList();
 
+            ViewData["Modo"] = "Cadastrar";
             return View(model);
         }
 

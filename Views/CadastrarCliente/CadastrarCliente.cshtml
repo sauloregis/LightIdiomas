@@ -1,19 +1,31 @@
 ﻿@model LightIdiomas.ViewModels.ClientesViewModel
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Cadastrar Cliente";
+    var modo = ViewData["Modo"]?.ToString();
+    var isEdit = modo == "Editar";
+
+    ViewData["Title"] = isEdit ? "Editar Cliente" : "Cadastrar Cliente";
 }
 
 <section class="p-6">
   <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
     <div class="flex items-center justify-between mb-6">
-      <h1 class="text-2xl font-semibold">Cadastro de Cliente</h1>
+      <h1 class="text-2xl font-semibold">
+          @(isEdit ? "Editar Cliente" : "Cadastrar Cliente")
+      </h1>
       <a href="javascript:history.back()" class="text-sm text-slate-600 hover:text-slate-800">Voltar</a>
     </div>
 
-    <form asp-controller="CadastrarCliente" asp-action="CadastrarCliente" method="post" novalidate>
+    <form asp-controller= "@(isEdit ? "EditarCliente" : "CadastrarCliente")"       
+        asp-action="@(isEdit ? "EditarCliente" : "CadastrarCliente")" 
+        method="post" novalidate>
       @Html.AntiForgeryToken()
       <div asp-validation-summary="ModelOnly" class="mb-4 text-sm text-red-600"></div>
+
+      @if (isEdit)
+      {
+        <input type="hidden" asp-for="IdCliente"/>
+      }
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
@@ -116,8 +128,14 @@
       </div>
 
       <div class="mt-6 flex items-center gap-3">
-        <button type="submit" class="px-5 py-2 rounded bg-brand-blue text-white hover:bg-brand-blue/90">Cadastrar</button>
-        <button type="reset" class="px-4 py-2 rounded border border-slate-300 text-slate-700 hover:bg-slate-50">Limpar</button>
+        <button type="submit" 
+                class="px-5 py-2 rounded bg-brand-blue text-white hover:bg-brand-blue/90">
+                @(isEdit ? "Salvar Alterações" : "Cadastrar")</button>
+        
+        @if (!isEdit)
+        {
+            <button type="reset" class="px-4 py-2 rounded border border-slate-300 text-slate-700 hover:bg-slate-50">Limpar</button>
+        }
       </div>
     </form>
   </div>
