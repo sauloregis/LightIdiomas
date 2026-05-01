@@ -24,6 +24,7 @@ namespace LightIdiomas.Controllers
 
             var clienteEditavel = new ClientesViewModel
             {
+                IdCliente = cliente.Id,
                 Nome_Cliente = cliente.Nm_Cliente,
                 Nacionalidade = cliente.Nacionalidade,
                 Endereco = cliente.Endereco,
@@ -34,12 +35,14 @@ namespace LightIdiomas.Controllers
                 Telefone = cliente.Telefone,
                 Whatsapp = cliente.Whatsapp,
                 CidadeId = cliente.CidadeId,
-                EstadoId = cliente.Cidade.EstadoId,
+                EstadoId = _context.Cidades.FirstOrDefault(c => c.Id == cliente.CidadeId)?.EstadoId ?? 0,
                 DataNascimento = cliente.DataNascimento,
                 Genero = cliente.Genero,
                 TurmaId = cliente.TurmaId,
                 NivelIngles = cliente.NivelIngles
             };
+
+            RepopularSelects(clienteEditavel);
 
             ViewData["Modo"] = "Editar";
             return View("~/Views/CadastrarCliente/CadastrarCliente.cshtml", clienteEditavel);
@@ -74,6 +77,50 @@ namespace LightIdiomas.Controllers
             }
 
             return RedirectToAction("Index", "Home");
+        }
+
+        private void RepopularSelects(ClientesViewModel model)
+        {
+            if (model is null)
+                return;
+
+            model.Generos = Enum.GetValues(typeof(Genero))
+                .Cast<Genero>()
+                .Select(g => new SelectListItem
+                {
+                    Value = ((int)g).ToString(),
+                    Text = g.ToString()
+                }).ToList();
+
+            model.Estados = _context.Estados
+                .Select(e => new SelectListItem
+                {
+                    Value = e.Id.ToString(),
+                    Text = e.UF + " - " + e.Nome
+                }).ToList();
+
+            model.Turmas = _context.Turmas
+                .Select(t => new SelectListItem()
+                {
+                    Value = t.Id.ToString(),
+                    Text = t.Nome
+                }).ToList();
+
+            if (model.EstadoId > 0)
+            {
+                model.Cidades = _context.Cidades
+                    .Where(c => c.EstadoId == model.EstadoId)
+                    .OrderBy(c => c.Nome)
+                    .Select(c => new SelectListItem
+                    {
+                        Value = c.Id.ToString(),
+                        Text = c.Nome
+                    }).ToList();
+            }
+            else
+            {
+                model.Cidades = new List<SelectListItem>();
+            }
         }
     }
 }

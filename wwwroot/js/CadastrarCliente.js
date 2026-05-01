@@ -6,7 +6,6 @@
     });
 }
 
-/* Todas as interações com elementos DOM ficam dentro do DOMContentLoaded */
 document.addEventListener('DOMContentLoaded', function () {
     const estadoSelect = document.getElementById("estadoSelect");
     const cidadeSelect = document.getElementById("cidadeSelect");
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const tel = document.getElementById('telefone');
     const email = document.querySelector('input[type="email"]');
 
-    /* máscaras e listeners */
     function maskCPFInput(e) {
         const input = e.target;
         let v = input.value.replace(/\D/g, '').slice(0, 11);
@@ -126,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-/* funções de validação (mantidas fora do DOMContentLoaded) */
 function validarCPF(cpf) {
     cpf = (cpf || '').replace(/[^\d]+/g, '');
     if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
