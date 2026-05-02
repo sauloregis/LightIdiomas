@@ -52,6 +52,7 @@ namespace LightIdiomas.Entities
         public NivelIngles NivelIngles { get; set; }
         public int? TurmaId { get; set; } // Pode ser null para alunos sem turma
         public Turma? Turma { get; set; }
+        public bool Ativo { get; set; } = true;
     }
 }
 

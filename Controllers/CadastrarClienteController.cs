@@ -87,7 +87,8 @@ namespace LightIdiomas.Controllers
                 DataNascimento = cadastrarCliente.DataNascimento,
                 Genero = cadastrarCliente.Genero,
                 TurmaId = cadastrarCliente.TurmaId,
-                NivelIngles = cadastrarCliente.NivelIngles
+                NivelIngles = cadastrarCliente.NivelIngles,
+                Ativo = true
             };
 
             _context.Clientes.Add(cliente);
